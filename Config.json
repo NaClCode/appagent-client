@@ -1,0 +1,6 @@
+{
+ "Server": {
+  "url": "http://127.0.0.1:8000"
+ },
+ "token": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiTmFjbCIsInByZW1pc3Npb24iOiJBZG1pbiIsImV4cCI6MTY2OTM5MTI5MH0.c4O4JVKQOLPVOX9wHinTDBYQtQzcDWGlrj-_cCEmOnE\""
+}
