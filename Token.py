@@ -1,11 +1,15 @@
-import os,json,sys
-path = f'{os.path.dirname(__file__)}'.replace('AppManager','')
-sys.path.append(path)
-import Net
+import os
 
-def Token()->dict:
-    with open(f'{path}/Token.json') as url:
-        url = json.load(url).get('token')
-    return {'token',url.replace('"','')}
+path = os.path.dirname(__file__)
+
+def settoken(ret:dict):
+    with open(f'{path}/user.token','rw+') as Token:
+        Token.write(ret.get('body'))
+
+def gettoken()->dict:
+    with open(f'{path}/user.token','rw+') as Token:
+        token = Token.read()
+    return {'token',token.replace('"','')}
+
 
 

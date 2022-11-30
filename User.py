@@ -1,14 +1,11 @@
-import os,json,Net,Error
-path = os.path.dirname(__file__)
+import Net,Exception,hashlib,Token
 
 def login():
     print('请登录Appagent')
     name = input('用户名：')
-    password = input('密码：')
+    password = hashlib.sha256(input('密码：')).hexdigest()
     ret = Net.net('Login',{'name':name,'password':password},None,'POST')
-    if Error.error():
-        with open(f'{path}/Config.json','w+') as Token:
-            json.dump({'token':ret.get('body')},indent = True,fp = Token)
+    if Exception.exception(ret) == 0: Token.settoken(ret)
 
 def register():
     print('请注册Appagent')
@@ -18,5 +15,5 @@ def register():
     if password != passwordagain:
         print('抱歉，两次密码不同，请重新注册')
         register()
-    ret = Net.net('Register',{'name':name,'password':password},None,'POST')
-    Error.error()
+    else:
+        Exception.exception(Net.net('Register',{'name':name,'password':hashlib.sha256(password).hexdigest()},None,'POST'))

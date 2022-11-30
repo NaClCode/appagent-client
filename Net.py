@@ -1,5 +1,5 @@
 import requests
-import os,json,Error
+import os,json,Exception
 
 jsonpath = f'{os.path.dirname(__file__)}\Config.json'
 
@@ -11,4 +11,4 @@ def net(neturl:str,payload:dict,headers:dict,method:dict)->dir:
         response = requests.request(method, reurl, headers=headers, data=payload)
         return {'code':response.status_code,'body':response.text,'head':response.headers}
     except:
-        Error.neterror()
+        Exception.netexception()
