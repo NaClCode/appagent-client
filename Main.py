@@ -1,39 +1,31 @@
-import User,Help,AppManager
+import User,Help,AppManager,Exception
 
 def user():
-    cmd = input('您的用户操作是').lower().title()
-    if cmd == 'Login': User.login()
-    elif cmd == 'Register': User.register()
-    elif cmd == 'Exit': exit()
-    elif cmd == 'Help': 
-        Help.userhelp()
-        user()
-    else: 
-        print('输入了无效指令，请您重新输入，如果您忘记了指令，请输入Help')
+    cmd = input('您的用户操作是：').lower().title()
+    if cmd == 'Exit': exit()
+    else:
+        if cmd == 'Login': User.login()
+        elif cmd == 'Register': User.register()
+        elif cmd == 'Help': Help.userhelp()
+        else: Exception.cmdexception()
         user()
 
 def appmanager():
     cmd = input('您的项目操作：').lower().title()
-    if cmd == 'Create':
-        AppManager.Create()
-        appmanager()
-    elif cmd == 'Listdir':
-        AppManager.Listdir()
-        appmanager()
-    elif cmd == 'Pull':
-        AppManager.Pull()
-        appmanager()
-    elif cmd == 'Dockerapp':
-        app = AppManager.dockerapp()
-        app.main()
-        appmanager()
-    elif cmd == 'Help':
-        Help.appmanager()
-        appmanager()
-    elif cmd == 'Exit': exit()   
+    if cmd == 'Exit': user()
     else:
-        print('输入了无效指令，请您重新输入，如果您忘记了指令，请输入Help')
+        if cmd == 'Create': AppManager.Create()
+        elif cmd == 'Listdir': AppManager.Listdir()
+        elif cmd == 'Pull': AppManager.Pull()
+        elif cmd == 'Dockerapp': 
+            app = AppManager.dockerapp()
+            app.main()
+        elif cmd == 'Help': Help.appmanagerhelp() 
+        else: Exception.cmdexception()
         appmanager()
-    
+
+if __name__ == '__main__':
+    user()
+
 
     

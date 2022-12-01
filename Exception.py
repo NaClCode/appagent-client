@@ -3,20 +3,16 @@ import os,json,Main,Help
 def netexception():
     jsonpath = f'{os.path.dirname(__file__)}\Config.json'
     cmd = input('无法连接服务器，请输入您的网络操作：').lower().title()
-    if cmd == 'Change':
-        myurl = input('服务器url：')
-        with open(jsonpath,"w+") as url:
-            json.dump({"Server":{"url":myurl}},indent = True,fp = url)
+    if cmd == 'Exit': Main.user()
+    elif cmd in ['Change','Restart']:
+        if cmd == 'Change':
+            myurl = input('服务器url：')
+            with open(jsonpath,"w+") as url:
+                json.dump({"Server":{"url":myurl}},indent = True,fp = url)
         Main.user()
-    elif cmd == 'Restart': 
-        Main.user()
-    elif cmd == 'Help': 
-        Help.nethelp()
-        netexception()
-    elif cmd == 'Exit': 
-        exit()
     else:
-        print('输入了无效指令，请您重新输入，如果您忘记了指令，请输入Help')
+        if cmd == 'Help': Help.nethelp()
+        else: cmdexception()
         netexception()
 
 def exception(ret:dict)->int:
@@ -30,3 +26,6 @@ def exception(ret:dict)->int:
     else:
         print('操作成功')
         return 0
+
+def cmdexception():
+    print('输入了无效指令，请您重新输入，如果您忘记了指令，请输入Help')
