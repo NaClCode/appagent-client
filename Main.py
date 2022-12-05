@@ -14,9 +14,10 @@ def appmanager():
     cmd = input('您的项目操作：').lower().title()
     if cmd == 'Exit': user()
     else:
-        if cmd == 'Create': AppManager.Create()
+        if cmd == 'Git': 
+            app = AppManager.Git()
+            app.main()
         elif cmd == 'Listdir': AppManager.Listdir()
-        elif cmd == 'Pull': AppManager.Pull()
         elif cmd == 'Dockerapp': 
             app = AppManager.dockerapp()
             app.main()

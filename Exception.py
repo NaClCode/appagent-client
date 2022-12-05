@@ -25,6 +25,7 @@ def exception(ret:dict)->int:
         return 1
     else:
         print('操作成功')
+        print(ret.get('code'))
         return 0
 
 def cmdexception():
