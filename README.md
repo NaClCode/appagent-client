@@ -3,35 +3,16 @@
 #### 介绍
 Appagent的客户端
 
-#### 软件架构
-软件架构说明
+## 背景
 
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+运维绝大多数工作都是重复的Web应用部署和管理。
+这些工作主要是拉取仓库、编写部署脚本、添加Nginx配置、添加域名解析，
+部署脚本更是要与后端对接了解特定应用技术栈下的部署方法（如Java与C#之别）。
+Token的前运维++h便提出使用Docker统一部署工作：后端在仓库中附带Dockerfile，
+而运维只需要关心如何将Docker应用运行起来，不需要关心应用许多细节。
+如此以来，部署工作便变得机械且重复，易于自动化。
+## 功能
+调用Appagent的REST API的客户端
+## 下一步更新
+- 支持dockerapp modify
+- 支持Appagent-Server（1.0.1.0的所有REST API）
