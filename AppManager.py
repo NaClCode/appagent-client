@@ -30,7 +30,11 @@ class dockerapp:
         if cmd == 'Exit': Main.appmanager()
         elif cmd == 'Remove': Exception.exception(Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'Delete'))
         else:
-            if cmd in ['Log','Stop','Restart','Up']: Exception.exception(Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'POST'))
+            if cmd in ['Stop','Restart','Up','Down','Start']: 
+                Exception.exception(Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'POST'))
+            elif cmd == 'Log':
+                ret = Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'POST')
+                if Exception.exception(ret) == 0:   print(ret.get('body'))
             elif cmd == 'Help': Help.dockerapphelp()
             else: Exception.cmdexception()
             self.main()

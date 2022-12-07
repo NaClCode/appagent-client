@@ -16,8 +16,11 @@ def dockerapphelp():
     print('docker容器操作')
     print('Log：展示app的log')
     print('Stop：停止app')
-    print('Restop：重启app')
+    print('Restart：重启app')
     print('Remove：删除app')
+    print('Up启动')
+    print('Down关闭')
+    print('Start开始')
     print('Help：帮助')
     print('Exit：退出')
 

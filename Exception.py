@@ -17,10 +17,12 @@ def netexception():
 
 def exception(ret:dict)->int:
     if ret.get('code') == 400:
-        print(f'操作失败（问题为{ret.get("body")}），请再次尝试，如果有疑问，请联系管理员或者NaCl')
+        print(f'操作失败，请再次尝试，如果有疑问，请联系管理员或者NaCl')
+        print(f'详情：{ret.get("body")}')
         return -1
     elif ret.get('code') == 405:
         print('请重新登陆')
+        print(f'详情：{ret.get("body")}')
         Main.user()
         return 1
     else:
