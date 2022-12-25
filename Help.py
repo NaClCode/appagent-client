@@ -13,7 +13,7 @@ def nethelp():
     print('Exit：退出')
 
 def dockerapphelp():
-    print('docker容器操作')
+    print('docker操作')
     print('Log：展示app的log')
     print('Stop：停止app')
     print('Restart：重启app')
@@ -26,9 +26,23 @@ def dockerapphelp():
 
 def appmanagerhelp():
     print('项目操作：')
-    print('Create：创建一个项目')
-    print('Listdir：列出指定文件夹的子文件')
-    print('Pull：从git拉取内容')
-    print('Dockerapp：指定一个docker app容器')
+    print('Git：Git操作')
+    print('File：File操作')
+    print('Docker：Docker应用')
+    print('Help：帮助')
+    print('Exit：退出')
+    
+def githelp():
+    print('Git操作：')
+    print('Clone：从git仓库复制')
+    print('Pull：从git仓库pull')
+    print('Help：帮助')
+    print('Exit：退出')
+    
+def filehelp():
+    print('File操作：')
+    print('Tree：用tree展示目录')
+    print('Df-h：文件的硬盘容量')
+    print('Rm：删除文件')
     print('Help：帮助')
     print('Exit：退出')

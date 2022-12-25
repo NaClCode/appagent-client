@@ -1,12 +1,14 @@
 import Net,Token,Exception,Main,Help 
-def Listdir():
-    listpath = input('文件夹地址：')
-    ret = Net.net('Main/Listdir',{'listpath':listpath},Token.gettoken(),'POST')
-    if Exception.exception(ret) == 0:
-        dirname = ret.get('body').replace('{"Listdir":["','').replace('"]}','').split('","')
-        print(f'{listpath}目录下的文件有：')
-        for i in dirname: print(i)
-
+class File():
+    def __init__(self):
+        self.__path = input('文件夹地址：')
+    def main(self):
+        cmd = input('你的File操作：').lower().title()
+        if cmd in ['Tree','Dfh','Rm']:
+            Exception.exception(Net.net(f'Main/File/{cmd}',{'listpath':self.__path},Token.gettoken(),'POST'),True)
+        elif cmd == 'Help': Help.filehelp()
+        else: Exception.cmdexception()
+            
 class Git:
     def __init__(self) -> None:
         self.__giturl = input('远程仓库地址(只支持http网址形式)：')
@@ -19,6 +21,7 @@ class Git:
         if cmd == 'Exit': Main.appmanager()
         else:
             if cmd in ['Clone','Pull']: Exception.exception(Net.net(f'Main/Git/{cmd}',{'gitname':self.__gitname,'gitpassword':self.__gitpassword,'giturl':self.__giturl,'branch':self.__gitbranch,'dest':self.__dest},Token.gettoken(),'POST'))
+            elif cmd == 'Help': Help.githelp()
             else: Exception.cmdexception()
 
 class dockerapp:
@@ -28,7 +31,7 @@ class dockerapp:
     def main(self):
         cmd = input('你的容器操作：').lower().title()
         if cmd == 'Exit': Main.appmanager()
-        elif cmd == 'Remove': Exception.exception(Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'Delete'))
+        elif cmd == 'Remove': Exception.exception(Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'POST'))
         else:
             if cmd in ['Stop','Restart','Up','Down','Start']: 
                 Exception.exception(Net.net(f'Main/Docker/{cmd}',{'ymlpath':self.__ymlpath,'container':self.__container},Token.gettoken(),'POST'))

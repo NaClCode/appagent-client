@@ -1,7 +1,7 @@
 import requests
 import os,json,Exception
 
-jsonpath = f'{os.path.dirname(__file__)}\Config.json'
+jsonpath = f'{os.path.dirname(__file__)}/Config.json'
 
 def net(neturl:str,payload:dict,headers:dict,method:dict)->dict:
     with open(jsonpath) as url:

@@ -17,8 +17,10 @@ def appmanager():
         if cmd == 'Git': 
             app = AppManager.Git()
             app.main()
-        elif cmd == 'Listdir': AppManager.Listdir()
-        elif cmd == 'Dockerapp': 
+        elif cmd == 'File': 
+            file = AppManager.File()
+            file.main()
+        elif cmd == 'Docker': 
             app = AppManager.dockerapp()
             app.main()
         elif cmd == 'Help': Help.appmanagerhelp() 
